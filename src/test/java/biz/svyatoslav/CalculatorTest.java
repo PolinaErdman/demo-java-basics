@@ -26,8 +26,6 @@ public class CalculatorTest {
         WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
         inputWeightWebElement.sendKeys("80");
 
-
-
         String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
         By buttonCalculateBy = By.xpath(buttonCalculateXpath);
         WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
