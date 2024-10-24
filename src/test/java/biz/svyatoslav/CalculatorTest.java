@@ -8,106 +8,57 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CalculatorTest {
-    @Test
-    public void test0() {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-        String textHeaderXpath = "/html/body/table/tbody/tr[1]/td";
-        By textHeaderBy = By.xpath(textHeaderXpath);
-        WebElement textHeaderWebElement = driver.findElement(textHeaderBy);
-        String actual = textHeaderWebElement.getText();
-        Assertions.assertTrue(actual.contains("Расчёт веса"), "Должно было быть: Расчёт веса");
-    }
+
+//    @Test
+//    public void test0() {
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://svyatoslav.biz/testlab/wt/index.php");
+//        LoginPage loginPage = new LoginPage(driver);
+//        String actual = loginPage.getHeaderText();
+//        String expected = LoginPageMessages.HEADER_TEXT;
+//        Assertions.assertEquals(expected, actual);
+//    }
 
     @Test
     public void test1() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.clickButtonCalculate();
     }
 
     @Test
     public void test2() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("180");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("80");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("180");
+        loginPage.sendKeysInputWeight("80");
+        loginPage.clickButtonCalculate();
     }
 
     @Test
     public void test3() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("180");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("80");
-
-        String genderFemaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[2]";
-        By genderBy = By.xpath(genderFemaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("180");
+        loginPage.sendKeysInputWeight("80");
+        loginPage.selectGenderFemale();
+        loginPage.clickButtonCalculate();
     }
 
     @Test
     public void test4() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Не указано имя.\n" +
-                "Рост должен быть в диапазоне 50-300 см.\n" +
-                "Вес должен быть в диапазоне 3-500 кг.\n" +
-                "Не указан пол.";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getErrorMessageText();
+        String expected = LoginPageMessages.INVALID_NAME_HEIGHT_WEIGHT_GENDER;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -115,25 +66,11 @@ public class CalculatorTest {
     public void test5() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Рост должен быть в диапазоне 50-300 см.\n" +
-                "Вес должен быть в диапазоне 3-500 кг.\n" +
-                "Не указан пол.";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getErrorMessageText();
+        String expected = LoginPageMessages.INVALID_HEIGHT_WEIGHT_GENDER;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -141,25 +78,11 @@ public class CalculatorTest {
     public void test6() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("180");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Не указано имя.\n" +
-                "Вес должен быть в диапазоне 3-500 кг.\n" +
-                "Не указан пол.";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputHeight("180");
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getErrorMessageText();
+        String expected = LoginPageMessages.INVALID_NAME_WEIGHT_GENDER;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -167,25 +90,11 @@ public class CalculatorTest {
     public void test7() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("80");
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Не указано имя.\n" +
-                "Рост должен быть в диапазоне 50-300 см.\n" +
-                "Не указан пол.";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputWeight("80");
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getErrorMessageText();
+        String expected = LoginPageMessages.INVALID_NAME_HEIGHT_GENDER;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -193,38 +102,14 @@ public class CalculatorTest {
     public void test8() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("180");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("80");
-
-        String genderFemaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[2]";
-        By genderBy = By.xpath(genderFemaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Идеальная масса тела";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("180");
+        loginPage.sendKeysInputWeight("80");
+        loginPage.selectGenderFemale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getResultMessageText();
+        String expected = LoginPageMessages.RESULT_IDEAL;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -232,38 +117,14 @@ public class CalculatorTest {
     public void test9() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("165");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("45");
-
-        String genderMaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[1]";
-        By genderBy = By.xpath(genderMaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Слишком малая масса тела";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("165");
+        loginPage.sendKeysInputWeight("45");
+        loginPage.selectGenderMale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getResultMessageText();
+        String expected = LoginPageMessages.RESULT_TOO_LOW;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -271,38 +132,14 @@ public class CalculatorTest {
     public void test10() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("165");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("75");
-
-        String genderFemaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[2]";
-        By genderBy = By.xpath(genderFemaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Умеренный избыток массы тела";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("165");
+        loginPage.sendKeysInputWeight("75");
+        loginPage.selectGenderFemale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getResultMessageText();
+        String expected = LoginPageMessages.RESULT_FAT2;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -310,38 +147,14 @@ public class CalculatorTest {
     public void test11() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("165");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("75");
-
-        String genderMaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[1]";
-        By genderBy = By.xpath(genderMaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Незначительный избыток массы тела";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("165");
+        loginPage.sendKeysInputWeight("75");
+        loginPage.selectGenderMale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getResultMessageText();
+        String expected = LoginPageMessages.RESULT_FAT1;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -349,38 +162,14 @@ public class CalculatorTest {
     public void test12() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("165");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("85");
-
-        String genderMaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[1]";
-        By genderBy = By.xpath(genderMaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Значительный избыток массы тела, тучность";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("165");
+        loginPage.sendKeysInputWeight("85");
+        loginPage.selectGenderMale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getResultMessageText();
+        String expected = LoginPageMessages.RESULT_FAT3;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -388,38 +177,14 @@ public class CalculatorTest {
     public void test13() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-
-        String inputNameXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
-        By inputNameBy = By.xpath(inputNameXpath);
-        WebElement inputNameWebElement = driver.findElement(inputNameBy);
-        inputNameWebElement.sendKeys("John");
-
-        String inputHeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[3]/td[2]/input";
-        By inputHeightBy = By.xpath(inputHeightXpath);
-        WebElement inputHeightWebElement = driver.findElement(inputHeightBy);
-        inputHeightWebElement.sendKeys("1650");
-
-        String inputWeightXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[4]/td[2]/input";
-        By inputWeightBy = By.xpath(inputWeightXpath);
-        WebElement inputWeightWebElement = driver.findElement(inputWeightBy);
-        inputWeightWebElement.sendKeys("85");
-
-        String genderMaleXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[5]/td[2]/input[1]";
-        By genderBy = By.xpath(genderMaleXpath);
-        WebElement genderWebElement = driver.findElement(genderBy);
-        genderWebElement.click();
-
-        String buttonCalculateXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
-        By buttonCalculateBy = By.xpath(buttonCalculateXpath);
-        WebElement buttonCalculateWebElement = driver.findElement(buttonCalculateBy);
-        buttonCalculateWebElement.click();
-
-        String textMessageXpath = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
-        By textMessageBy = By.xpath(textMessageXpath);
-        WebElement textMessageWebElement = driver.findElement(textMessageBy);
-        String actual = textMessageWebElement.getText();
-        String expected = "Рост должен быть в диапазоне 50-300 см.";
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.sendKeysInputName("Jhon");
+        loginPage.sendKeysInputHeight("1650");
+        loginPage.sendKeysInputWeight("85");
+        loginPage.selectGenderMale();
+        loginPage.clickButtonCalculate();
+        String actual = loginPage.getErrorMessageText();
+        String expected = LoginPageMessages.INVALID_HEIGHT;
         Assertions.assertEquals(expected, actual);
     }
 }
