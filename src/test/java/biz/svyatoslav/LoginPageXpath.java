@@ -9,5 +9,5 @@ public class LoginPageXpath {
     public static final String BUTTON_CALCULATE_XPATH = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[6]/td/input";
     public static final String ERROR_MESSAGE_XPATH = "/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[1]/td/b";
     public static final String RESULT_MESSAGE_XPATH = "/html/body/table/tbody/tr[2]/td[2]";
-//    public static final String HEADER_MESSAGE_XPATH = "/html/body/table/tbody/tr[1]/td/text()[1]";
+    public static final String HEADER_MESSAGE_XPATH = "/html/body/table/tbody/tr[1]/td";
 }

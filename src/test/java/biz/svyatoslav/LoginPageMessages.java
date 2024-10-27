@@ -20,5 +20,5 @@ public class LoginPageMessages {
             "Рост должен быть в диапазоне 50-300 см.\n" +
             "Вес должен быть в диапазоне 3-500 кг.\n" +
             "Не указан пол.";
-//    public static final String HEADER_TEXT = "Расчёт веса";
+    public static final String HEADER_TEXT = "Расчёт весa";
 }

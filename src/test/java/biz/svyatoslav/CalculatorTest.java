@@ -7,15 +7,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CalculatorTest {
 
-//    @Test
-//    public void test0() {
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://svyatoslav.biz/testlab/wt/index.php");
-//        LoginPage loginPage = new LoginPage(driver);
-//        String actual = loginPage.getHeaderText();
-//        String expected = LoginPageMessages.HEADER_TEXT;
-//        Assertions.assertEquals(expected, actual);
-//    }
+    @Test
+    public void test0() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://svyatoslav.biz/testlab/wt/index.php");
+        LoginPage loginPage = new LoginPage(driver);
+        String actual = loginPage.getHeaderText();
+        String expected = LoginPageMessages.HEADER_TEXT;
+        Assertions.assertTrue(actual.contains(expected), "Нет текста: " + expected);
+    }
 
     @Test
     public void test1() {

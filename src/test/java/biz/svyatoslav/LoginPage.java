@@ -59,9 +59,9 @@ public class LoginPage {
         return textMessageWebElement.getText();
     }
 
-//    public String getHeaderText() {
-//        By textHeaderBy = By.xpath(LoginPageXpath.HEADER_MESSAGE_XPATH);
-//        WebElement textHeaderWebElement = driver.findElement(textHeaderBy);
-//        return textHeaderWebElement.getText();
-//    }
+    public String getHeaderText() {
+        By textHeaderBy = By.xpath(LoginPageXpath.HEADER_MESSAGE_XPATH);
+        WebElement textHeaderWebElement = driver.findElement(textHeaderBy);
+        return textHeaderWebElement.getText();
+    }
 }
